@@ -52,7 +52,7 @@ const SectorView = () => {
     const requestSectorList = async () => {
         try {
             setLoading(true);
-            const base = configData.baseUrl || `${configData.protocol}://${configData.server}:${configData.port}`;
+            const base = configData.baseUrl !== undefined ? configData.baseUrl : `${configData.protocol}://${configData.server}:${configData.port}`;
             const response = await axios.get(`${base}/sector-list`);
             const data = response.data;
             
@@ -75,7 +75,7 @@ const SectorView = () => {
     const requestSectorCompanyList = async (sector) => {
         try {
             setLoading(true);
-            const base = configData.baseUrl || `${configData.protocol}://${configData.server}:${configData.port}`;
+            const base = configData.baseUrl !== undefined ? configData.baseUrl : `${configData.protocol}://${configData.server}:${configData.port}`;
             const response = await axios.post(`${base}/sector-company-list`, {
                 sector: sector
             });
